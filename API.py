@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 @app.route("/contacts", methods=["GET"])
 def get_contacts():
+    """Function for getting all contacts"""
+
     connect = create_connection()
     if connect:
         try:
