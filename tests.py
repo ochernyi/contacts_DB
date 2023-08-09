@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock, patch
 from flask import Flask
-from API import search_handler
+from api import search_handler
 
 
 class TestSearchHandler(unittest.TestCase):
@@ -12,7 +12,7 @@ class TestSearchHandler(unittest.TestCase):
         )
         self.client = self.app.test_client()
 
-    @patch("DBConnection.create_connection")
+    @patch("db_connection.create_connection")
     def test_search_handler_with_results(self, mock_create_connection):
         mock_cursor = Mock()
         result = mock_cursor.fetchall.return_value = [
@@ -48,7 +48,7 @@ class TestSearchHandler(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data, result)
 
-    @patch("DBConnection.create_connection")
+    @patch("db_connection.create_connection")
     def test_search_handler_no_results(self, mock_create_connection):
         mock_cursor = Mock()
         mock_cursor.fetchall.return_value = []

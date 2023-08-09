@@ -1,6 +1,6 @@
 import csv
 
-from DBConnection import create_connection
+from db_connection import create_connection
 
 create_table_query = """
 CREATE TABLE contacts (
